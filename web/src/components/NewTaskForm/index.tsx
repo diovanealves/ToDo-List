@@ -22,18 +22,24 @@ export function NewTaskForm() {
   }
 
   return (
-    <form onSubmit={createNewTask} className="">
-      <input
-        type="text"
-        placeholder="Adicione uma nova Tarefa"
-        autoFocus
-        value={title}
-        onChange={(event) => setTitle(event.target.value)}
-      />
-      <button type="submit" className="">
-        Criar
-        <PlusCircle />
-      </button>
-    </form>
+    <div className="max-w-lg w-11/12">
+      <form onSubmit={createNewTask} className="flex flex-1 justify-between">
+        <input
+          type="text"
+          className="w-[70%] md:w-[80%] p-2 bg-gray-500 rounded-lg"
+          placeholder="Adicione nova Tarefa"
+          autoFocus
+          value={title}
+          onChange={(event) => setTitle(event.target.value)}
+        />
+        <button
+          type="submit"
+          className="flex items-center gap-2 bg-button px-4 rounded-lg"
+        >
+          Criar
+          <PlusCircle />
+        </button>
+      </form>
+    </div>
   );
 }
