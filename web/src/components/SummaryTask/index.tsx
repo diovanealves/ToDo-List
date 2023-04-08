@@ -18,7 +18,7 @@ export function SummaryTask() {
     api.get("todos").then((res) => {
       setSummary(res.data);
     });
-  }, []);
+  }, [summary]);
 
   return (
     <div className="max-w-lg w-11/12 flex flex-col gap-3 mt-10">
