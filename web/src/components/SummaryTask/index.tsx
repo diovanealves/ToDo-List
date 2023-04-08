@@ -61,7 +61,7 @@ export function SummaryTask() {
             <div className="flex gap-5">
               <button onClick={() => completedTask(task.id)}>
                 {completed == true ? (
-                  <CheckCircle weight="fill" size={24} color="#b0ff92" />
+                  <CheckCircle weight="fill" size={24} color="#1E6F9F" />
                 ) : (
                   <Circle weight="bold" size={24} />
                 )}
