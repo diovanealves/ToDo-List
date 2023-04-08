@@ -14,6 +14,12 @@ type SummaryTask = Array<{
 export function SummaryTask() {
   const [summary, setSummary] = useState<SummaryTask>([]);
 
+  async function deleteTask(taskId: string) {
+    await api.delete(`/todos/${taskId}`).then((res) => {
+      alert("Task Deletada");
+    });
+  }
+
   useEffect(() => {
     api.get("todos").then((res) => {
       setSummary(res.data);
@@ -32,7 +38,7 @@ export function SummaryTask() {
               <input type="checkbox" className="w-4" />
               <h1 className=" font-bold">{task.title}</h1>
             </div>
-            <button>
+            <button onClick={() => deleteTask(task.id)}>
               <Trash size={23} />
             </button>
           </div>
