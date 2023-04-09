@@ -51,7 +51,11 @@ export function SummaryTask() {
           >
             <div className="flex gap-5">
               <button onClick={() => completedTask(task.id)}>
-                <Circle />
+                {task.completed == true ? (
+                  <CheckCircle weight="fill" size={24} color="#1E6F9F" />
+                ) : (
+                  <Circle size={24} />
+                )}
               </button>
               <h1 className="font-bold">{task.title}</h1>
             </div>
