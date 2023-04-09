@@ -21,13 +21,9 @@ export function SummaryTask() {
       return;
     }
 
-    const updateTask = !taskUpdate.completed ? true : false;
-
     await api
-      .patch(`/todo/${taskId}/complete`, { completed: updateTask })
-      .then((res) => {
-        alert("");
-      })
+      .patch(`/todo/${taskId}/complete`, { completed: !taskUpdate.completed })
+      .then((res) => {})
       .catch((error) => {
         console.log(error);
       });
@@ -54,7 +50,9 @@ export function SummaryTask() {
             className="flex flex-1 justify-between items-center px-6 py-4 bg-gray-800 rounded-lg"
           >
             <div className="flex gap-5">
-              <button onClick={() => completedTask(task.id)}></button>
+              <button onClick={() => completedTask(task.id)}>
+                <Circle />
+              </button>
               <h1 className="font-bold">{task.title}</h1>
             </div>
             <button onClick={() => deleteTask(task.id)}>
