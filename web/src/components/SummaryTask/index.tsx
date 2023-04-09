@@ -4,38 +4,33 @@ import { Trash, CheckCircle, Circle } from "phosphor-react";
 import { api } from "../../lib/axios";
 import { TaskEmpty } from "../TaskEmpty";
 
-type SummaryTask = Array<{
+type SummaryTask = {
   id: string;
   title: string;
-  completed: string;
+  completed: boolean;
   createdAt: Date;
-}>;
+};
 
 export function SummaryTask() {
-  const [summary, setSummary] = useState<SummaryTask>([]);
-  const [completed, setCompleted] = useState(false);
+  const [summary, setSummary] = useState<SummaryTask[]>([]);
 
-  // Pode rolar melhorias nesse Função OBS: não e gambiarra se esta funcionando!
   async function completedTask(taskId: string) {
-    if (completed == false) {
-      await api
-        .patch(`/todo/${taskId}/complete`, { completed: true })
-        .then((res) => {
-          setCompleted(true);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    } else {
-      await api
-        .patch(`/todo/${taskId}/complete`, { completed: false })
-        .then((res) => {
-          setCompleted(false);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+    const taskUpdate = summary.find((task) => task.id === taskId);
+
+    if (!taskUpdate) {
+      return;
     }
+
+    const updateTask = !taskUpdate.completed ? true : false;
+
+    await api
+      .patch(`/todo/${taskId}/complete`, { completed: updateTask })
+      .then((res) => {
+        alert("");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
   async function deleteTask(taskId: string) {
@@ -59,13 +54,7 @@ export function SummaryTask() {
             className="flex flex-1 justify-between items-center px-6 py-4 bg-gray-800 rounded-lg"
           >
             <div className="flex gap-5">
-              <button onClick={() => completedTask(task.id)}>
-                {completed == true ? (
-                  <CheckCircle weight="fill" size={24} color="#1E6F9F" />
-                ) : (
-                  <Circle weight="bold" size={24} />
-                )}
-              </button>
+              <button onClick={() => completedTask(task.id)}></button>
               <h1 className="font-bold">{task.title}</h1>
             </div>
             <button onClick={() => deleteTask(task.id)}>
