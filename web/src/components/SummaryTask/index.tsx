@@ -1,8 +1,10 @@
+import * as Dialog from "@radix-ui/react-dialog";
 import { useEffect, useState } from "react";
-import { Trash, CheckCircle, Circle } from "phosphor-react";
+import { Trash, CheckCircle, Circle, Pencil, X } from "phosphor-react";
 
 import { api } from "../../lib/axios";
 import { TaskEmpty } from "../TaskEmpty";
+import { EditTask } from "../EditTask";
 
 type SummaryTask = {
   id: string;
@@ -59,9 +61,28 @@ export function SummaryTask() {
               </button>
               <h1 className="font-bold">{task.title}</h1>
             </div>
-            <button onClick={() => deleteTask(task.id)}>
-              <Trash size={23} />
-            </button>
+            <div className="flex gap-2">
+              <Dialog.Root>
+                <Dialog.Trigger type="button">
+                  <Pencil size={23} />
+                </Dialog.Trigger>
+                <Dialog.Portal>
+                  <Dialog.Overlay />
+                  <Dialog.Content className="absolute p-10 bg-gray-800 rounded-lg w-11/12 max-w-lg top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+                    <Dialog.Close className="absolute right-6 top-6 rounded-lg text-zinc-400 hover:text-zinc-200 focus:outline-none focus:ring-2 focus:text-[#1E6F9F] focus:ring-offset-2 focus:ring-offset-[#1E6F9F]">
+                      <X size={23} aria-label="Fechar" />
+                    </Dialog.Close>
+                    <Dialog.Title className="text-3xl leading-tight font-extrabold">
+                      Editar Tarefa
+                    </Dialog.Title>
+                    <EditTask data={task.id} />
+                  </Dialog.Content>
+                </Dialog.Portal>
+              </Dialog.Root>
+              <button onClick={() => deleteTask(task.id)}>
+                <Trash size={23} />
+              </button>
+            </div>
           </div>
         ))
       ) : (
