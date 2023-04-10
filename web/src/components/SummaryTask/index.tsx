@@ -23,18 +23,14 @@ export function SummaryTask() {
       return;
     }
 
-    await api
-      .patch(`/todo/${taskId}/complete`, { completed: !taskUpdate.completed })
-      .then((res) => {})
-      .catch((error) => {
-        console.log(error);
-      });
+    await api.patch(`/todo/${taskId}/complete`, {
+      completed: !taskUpdate.completed,
+    });
   }
 
   async function deleteTask(taskId: string) {
-    await api.delete(`/todos/${taskId}`).then((res) => {
-      alert("Task Deletada");
-    });
+    await api.delete(`/todos/${taskId}`);
+    alert("Task Deletada");
   }
 
   useEffect(() => {

@@ -8,24 +8,19 @@ interface Props {
 
 export function EditTask({ data }: Props) {
   const [inputEditTask, setInputEditTask] = useState("");
+
   async function handleEditTask() {
     if (!inputEditTask) {
       return alert("Erro na alteração da tarefa.");
     }
 
-    await api
-      .put(`/update/${data}`, {
-        id: String(data),
-        title: inputEditTask,
-      })
-      .then((res) => {
-        alert("Tarefa alterada com sucesso!");
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    await api.put(`/update/${data}`, {
+      id: String(data),
+      title: inputEditTask,
+    });
 
     setInputEditTask("");
+    alert("Tarefa alterada com sucesso!");
   }
   return (
     <form onSubmit={handleEditTask} className="flex flex-col gap-6 mt-9">
