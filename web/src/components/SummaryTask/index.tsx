@@ -55,7 +55,9 @@ export function SummaryTask() {
                   <Circle size={24} />
                 )}
               </button>
-              <h1 className="font-bold">{task.title}</h1>
+              <h1 className={task.completed ? "line-through opacity-40" : ""}>
+                {task.title}
+              </h1>
             </div>
             <div className="flex gap-2">
               <Dialog.Root>
