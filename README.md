@@ -5,16 +5,11 @@
 | :placard: Vitrine.Dev |                                           |
 | --------------------- | ----------------------------------------- |
 | :sparkles: Nome       | **ToDo-List**                             |
-| :label: Tecnologias   | React, Nodejs.                            |
+| :label: Tecnologias   | React, Nodejs                           |
 | :rocket: URL          | \*\*\*\*                                  |
 | :fire: Repositorio    | https://github.com/diovanealves/ToDo-List |
 
 ![](./public/preview.jpg#vitrinedev)
-
-<div align="center">
-  <iframe width="560" height="315" src="https://www.youtube.com/embed/GE60KOITTho" frameborder="0"
-  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</div>
 
 <p align="center">
   <a href="#-tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
