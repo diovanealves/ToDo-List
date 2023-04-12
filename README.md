@@ -11,6 +11,13 @@
 
 ![](./public/preview.jpg#vitrinedev)
 
+<div align="center">
+
+https://user-images.githubusercontent.com/87160050/231330420-c878c468-9989-4692-a65b-b851ffd953ed.mp4
+
+</div>
+
+
 <p align="center">
   <a href="#-tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#memo-licença">Licença</a>
