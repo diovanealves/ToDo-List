@@ -14,6 +14,10 @@ export function EditTask({ data }: Props) {
       return alert("Erro na alteração da tarefa.");
     }
 
+    await api.patch(`/todo/${data}/complete`, {
+      completed: false,
+    });
+
     await api.put(`/update/${data}`, {
       id: String(data),
       title: inputEditTask,
